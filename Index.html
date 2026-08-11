@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Performance by Denise AB - Professional services based in Vaxholm, Sweden">
+    <title>Performance by Denise AB</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0d9488;
+            --accent: #f59e0b;
+            --bg: #f8fafc;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+        }
+        
+        /* Navigation */
+        nav {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .lang-switch {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .lang-switch:hover {
+            background: var(--secondary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+        
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 2rem;
+            max-width: 100%;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Content Sections */
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+        }
+        
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .contact-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .contact-item p, .contact-item a {
+            color: var(--text-light);
+            text-decoration: none;
+        }
+        
+        .contact-item a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Language Specific */
+        .lang-se {
+            display: none;
+        }
+        
+        body.swedish .lang-en {
+            display: none;
+        }
+        
+        body.swedish .lang-se {
+            display: block;
+        }
+        
+        body.swedish .lang-se.inline {
+            display: inline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Utility */
+        .tagline {
+            color: var(--secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Performance by Denise AB",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Mässvägen 4 Lgh 1201",
+            "addressLocality": "Vaxholm",
+            "postalCode": "185 41",
+            "addressCountry": "SE"
+        },
+        "email": "contact@performancebyz.shop",
+        "telephone": "+447848464490",
+        "url": "https://performancebyz.shop"
+    }
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Performance by Denise AB</a>
+            <ul class="nav-links">
+                <li><a href="#home" class="lang-en">Home</a><a href="#home" class="lang-se">Hem</a></li>
+                <li><a href="#about" class="lang-en">About</a><a href="#about" class="lang-se">Om oss</a></li>
+                <li><a href="#contact" class="lang-en">Contact</a><a href="#contact" class="lang-se">Kontakt</a></li>
+                <li><button class="lang-switch" onclick="toggleLanguage()" aria-label="Switch language">
+                    <span class="lang-en">SV</span>
+                    <span class="lang-se">EN</span>
+                </button></li>
+            </ul>
+            <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <h1>Performance by Denise AB</h1>
+            <p class="lang-en">Professional Excellence • Swedish Quality • Global Reach</p>
+            <p class="lang-se">Professionell Excellens • Svensk Kvalitet • Global Räckvidd</p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="lang-en">
+                <div class="tagline">About Us</div>
+                <h2 class="section-title">Company Overview</h2>
+                <div class="card">
+                    <p><strong>Performance by Denise AB</strong> is a registered Swedish company (Aktiebolag) based in Vaxholm, Stockholm County. We are dedicated to delivering high-quality solutions and professional services to our clients.</p>
+                    <br>
+                    <p>With a focus on excellence, innovation, and customer satisfaction, we strive to exceed expectations in every project we undertake. Our commitment to Swedish business standards ensures reliability, transparency, and superior performance.</p>
+                    <br>
+                    <p>Registered Address: Mässvägen 4 Lgh 1201, 185 41 Vaxholm, Sweden</p>
+                </div>
+            </div>
+            <div class="lang-se">
+                <div class="tagline">Om Oss</div>
+                <h2 class="section-title">Företagsöversikt</h2>
+                <div class="card">
+                    <p><strong>Performance by Denise AB</strong> är ett registrerat svenskt aktiebolag baserat i Vaxholm, Stockholms län. Vi är dedikerade till att leverera högkvalitativa lösningar och professionella tjänster till våra kunder.</p>
+                    <br>
+                    <p>Med fokus på excellens, innovation och kundnöjdhet strävar vi efter att överträffa förväntningar i varje projekt vi genomför. Vårt åtagande till svenska affärsstandarder garanterar pålitlighet, transparens och överlägsen prestanda.</p>
+                    <br>
+                    <p>Registrerad Adress: Mässvägen 4 Lgh 1201, 185 41 Vaxholm, Sverige</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="lang-en">
+                <div class="tagline">Get in Touch</div>
+                <h2 class="section-title">Contact Information</h2>
+            </div>
+            <div class="lang-se">
+                <div class="tagline">Kontakta Oss</div>
+                <h2 class="section-title">Kontaktinformation</h2>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h3 class="lang-en">📍 Address</h3>
+                    <h3 class="lang-se">📍 Adress</h3>
+                    <p>Mässvägen 4 Lgh 1201<br>185 41 Vaxholm<br>
+                        <span class="lang-en">Sweden</span>
+                        <span class="lang-se">Sverige</span>
+                    </p>
+                </div>
+                <div class="contact-item">
+                    <h3>📧 Email</h3>
+                    <a href="mailto:contact@performancebyz.shop">contact@performancebyz.shop</a>
+                </div>
+                <div class="contact-item">
+                    <h3 class="lang-en">📱 Phone</h3>
+                    <h3 class="lang-se">📱 Telefon</h3>
+                    <a href="tel:+447848464490">+44 7848 464490</a>
+                </div>
+                <div class="contact-item">
+                    <h3 class="lang-en">🏢 Organization</h3>
+                    <h3 class="lang-se">🏢 Organisation</h3>
+                    <p>Performance by Denise AB<br>Org.nr: 559549-6877</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="lang-en">
+            © 2025 Performance by Denise AB. All rights reserved.<br>
+            <a href="privacy-policy.html">Privacy Policy</a>
+        </p>
+        <p class="lang-se">
+            © 2025 Performance by Denise AB. Alla rättigheter förbehållna.<br>
+            <a href="privacy-policy.html">Integritetspolicy</a>
+        </p>
+    </footer>
+
+    <script>
+        function toggleLanguage() {
+            document.body.classList.toggle('swedish');
+            const isSwedish = document.body.classList.contains('swedish');
+            document.documentElement.lang = isSwedish ? 'sv' : 'en';
+            localStorage.setItem('lang', isSwedish ? 'sv' : 'en');
+        }
+        
+        function toggleMobileMenu() {
+            const nav = document.querySelector('.nav-links');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+            if (nav.style.display === 'flex') {
+                nav.style.position = 'absolute';
+                nav.style.top = '100%';
+                nav.style.left = '0';
+                nav.style.right = '0';
+                nav.style.flexDirection = 'column';
+                nav.style.background = 'white';
+                nav.style.padding = '1rem';
+                nav.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+            }
+        }
+        
+        // Check for saved language preference
+        if (localStorage.getItem('lang') === 'sv') {
+            document.body.classList.add('swedish');
+            document.documentElement.lang = 'sv';
+        }
+    </script>
+</body>
+</html>
